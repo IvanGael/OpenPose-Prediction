@@ -89,5 +89,5 @@ if __name__ == "__main__":
 
 # example usage
 # py main.py --input video.mp4 --model graph_opt.pb --width 368 --height 368 --thr 0.2
-# py main.py --input model.png --model graph_opt.pb --width 368 --height 368 --thr 0.2
-# py main.py --input model7.jpg --model graph_opt.pb --width 368 --height 368 --thr 0.2
+# py main.py --input model1.png --model graph_opt.pb --width 368 --height 368 --thr 0.2
+# py main.py --input model4.jpg --model graph_opt.pb --width 368 --height 368 --thr 0.2
