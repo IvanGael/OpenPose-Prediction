@@ -62,7 +62,7 @@ if __name__ == "__main__":
             if file_extension in ['.jpg', '.jpeg', '.png']:  # If it's an image
                 frame = cv.imread(args.input)
                 frame = process_frame(net, frame, args.width, args.height, BODY_PARTS, POSE_PAIRS, args.thr)
-                cv.imshow('OpenPose using OpenCV', frame)
+                cv.imshow('OpenPose', frame)
                 cv.waitKey(0)
             elif file_extension in ['.mp4', '.avi', '.mov']:  # If it's a video
                 cap = cv.VideoCapture(args.input)
@@ -83,13 +83,11 @@ if __name__ == "__main__":
                 cv.waitKey()
                 break
             frame = process_frame(net, frame, args.width, args.height, BODY_PARTS, POSE_PAIRS, args.thr)
-            cv.imshow('OpenPose using OpenCV', frame)
+            cv.imshow('OpenPose', frame)
 
 
 
 # example usage
 # py main.py --input video.mp4 --model graph_opt.pb --width 368 --height 368 --thr 0.2
-# py main.py --input model.jpg --model graph_opt.pb --width 368 --height 368 --thr 0.2
-# py main.py --input model2.jpg --model graph_opt.pb --width 368 --height 368 --thr 0.2
-# py main.py --input model3.jpg --model graph_opt.pb --width 368 --height 368 --thr 0.2
-# py main.py --input model4.jpg --model graph_opt.pb --width 368 --height 368 --thr 0.2
+# py main.py --input model.png --model graph_opt.pb --width 368 --height 368 --thr 0.2
+# py main.py --input model7.jpg --model graph_opt.pb --width 368 --height 368 --thr 0.2
