@@ -9,6 +9,32 @@ def load_model(model_path):
     net = cv.dnn.readNetFromTensorflow(model_path)
     return net
 
+# def process_frame(net, frame, inWidth, inHeight, BODY_PARTS, POSE_PAIRS, thr):
+#     frameHeight, frameWidth = frame.shape[:2]
+#     net.setInput(cv.dnn.blobFromImage(frame, 1.0, (inWidth, inHeight), (127.5, 127.5, 127.5), swapRB=True, crop=False))
+#     out = net.forward()
+#     out = out[:, :19, :, :]  # MobileNet output [1, 57, -1, -1], we only need the first 19 elements
+
+#     assert(len(BODY_PARTS) == out.shape[1])
+
+#     points = []
+#     for i in range(len(BODY_PARTS)):
+#         heatMap = out[0, i, :, :]
+#         _, conf, _, point = cv.minMaxLoc(heatMap)
+#         x = (frameWidth * point[0]) / out.shape[3]
+#         y = (frameHeight * point[1]) / out.shape[2]
+#         points.append((int(x), int(y)) if conf > thr else None)
+
+#     for pair in POSE_PAIRS:
+#         partFrom, partTo = pair
+#         idFrom, idTo = BODY_PARTS[partFrom], BODY_PARTS[partTo]
+#         if points[idFrom] and points[idTo]:
+#             cv.line(frame, points[idFrom], points[idTo], (0, 255, 0), 3)
+#             cv.ellipse(frame, points[idFrom], (3, 3), 0, 0, 360, (0, 0, 255), cv.FILLED)
+#             cv.ellipse(frame, points[idTo], (3, 3), 0, 0, 360, (0, 0, 255), cv.FILLED)
+#     return frame
+
+# With body parts annotation
 def process_frame(net, frame, inWidth, inHeight, BODY_PARTS, POSE_PAIRS, thr):
     frameHeight, frameWidth = frame.shape[:2]
     net.setInput(cv.dnn.blobFromImage(frame, 1.0, (inWidth, inHeight), (127.5, 127.5, 127.5), swapRB=True, crop=False))
@@ -32,7 +58,11 @@ def process_frame(net, frame, inWidth, inHeight, BODY_PARTS, POSE_PAIRS, thr):
             cv.line(frame, points[idFrom], points[idTo], (0, 255, 0), 3)
             cv.ellipse(frame, points[idFrom], (3, 3), 0, 0, 360, (0, 0, 255), cv.FILLED)
             cv.ellipse(frame, points[idTo], (3, 3), 0, 0, 360, (0, 0, 255), cv.FILLED)
+            # Adding annotation
+            cv.putText(frame, partFrom, points[idFrom], cv.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1, cv.LINE_AA)
+            cv.putText(frame, partTo, points[idTo], cv.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1, cv.LINE_AA)
     return frame
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
