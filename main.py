@@ -25,6 +25,3 @@ def run_visualization():
 if __name__ == "__main__":
     run_visualization()
 
-
-# py main.py visualization1 --input models/video.mp4 --model graph_opt.pb --width 368 --height 368 --thr 0.2
-# py main.py visualization1 --input models/model6.jpg --model graph_opt.pb --width 368 --height 368 --thr 0.2
