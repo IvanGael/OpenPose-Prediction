@@ -2,12 +2,8 @@ import cv2 as cv
 import numpy as np
 import argparse
 import os
+from utils import load_model
 
-def load_model(model_path):
-    if not os.path.exists(model_path):
-        raise FileNotFoundError("Model file not found.")
-    net = cv.dnn.readNetFromTensorflow(model_path)
-    return net
 
 # With body parts annotation
 def process_frame(net, frame, inWidth, inHeight, BODY_PARTS, POSE_PAIRS, thr):

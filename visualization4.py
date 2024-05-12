@@ -2,12 +2,8 @@ import cv2 as cv
 import numpy as np
 import argparse
 import os
+from utils import load_model
 
-def load_model(model_path):
-    if not os.path.exists(model_path):
-        raise FileNotFoundError("Model file not found.")
-    net = cv.dnn.readNetFromTensorflow(model_path)
-    return net
 
 def calculate_statistics(out, thr):
     total_confidence = 0
