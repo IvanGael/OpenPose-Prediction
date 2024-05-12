@@ -6,8 +6,8 @@
 - Visualization 2 : With body parts annotation
 ![Demo2](demos/demo2.png)
 
-- Visualization 3 : Body Part Confidence Visualization
+- Visualization 3 : Body part confidence score
 ![Demo3](demos/demo3.png)
 
-- Visualization 4 : Statistics Pose Estimation Performance
+- Visualization 4 : Average confidence score and number of detected body parts
 ![Demo4](demos/demo4.png)
