@@ -73,7 +73,7 @@ if __name__ == "__main__":
                         cv.waitKey()
                         break
                     frame = process_frame(net, frame, args.width, args.height, BODY_PARTS, POSE_PAIRS, args.thr)
-                    cv.imshow('OpenPose using OpenCV', frame)
+                    cv.imshow('OpenPose', frame)
         else:
             print("Input file not found.")
     else:  # If no input specified, capture frames from camera
