@@ -1,4 +1,4 @@
-### Person's body parts or joint position prediction using openCVs
+### Person's body parts or joint position detection using openCV
 
 - Visualization 1 : Without body parts annotation
 
